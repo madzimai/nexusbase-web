@@ -1,25 +1,51 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import * as Pages from './components/pages/Index'
+
+const routes = [
+  {
+    path: "/",
+    exact: true,
+    main: () => Pages.Home()
+  },
+  {
+    path: "/collections",
+    exact: true,
+    main: () => Pages.Collections()
+  }
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+          <table>
+            <tr>
+              <td>
+                NexusBase |
+              </td>
+              <td>
+                <Link to="/">Home</Link>
+              </td>
+              <td>
+                <Link to="/collections">Collections</Link>
+              </td>
+            </tr>
+          </table>
+        <div className="content">
+          {routes.map((route, index) => (
+              // Render more <Route>s with the same paths as
+              // above, but different components this time.
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                component={route.main}
+              />
+            ))}
+        </div>
+      </div>
+    </Router>
   );
 }
 
