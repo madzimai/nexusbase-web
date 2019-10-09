@@ -1,29 +1,44 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { routes } from './routes'
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Link } from "react-router-dom";
+import { ContextProvider } from './utilities/context'
+import Routes from './components/Routes';
+import RecordModal from './components/modals/RecordModal';
 
-function App() {
-  return (
-    <Router>
-      <div className="App">
-          <div className="header">
-            <Link to="/">NexusBase</Link>-|-
-            <Link to="/collections">Collections</Link>
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      recordModal: true,
+      openRecordModal: this.openRecordModal,
+      closeRecordModal: this.closeRecordModal,
+    }
+  }
+
+  openRecordModal = (recordId) => {
+    this.setState({ recordModal: true });
+  }
+
+  closeRecordModal = () => {
+    this.setState({ recordModal: false });
+  }
+
+  render() {
+    return (
+      <Router>
+        <ContextProvider value={this.state}>
+          <div className="App">
+            <div className="header">
+              <Link to="/">NexusBase</Link>-|-
+              <Link to="/collections">Collections</Link>
+            </div>
+            <hr/>
+            <Routes />
+            <RecordModal />
           </div>
-          <hr/>
-        <div className="content">
-          {routes.map((route, index) => (
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                component={route.main}
-              />
-            ))}
-        </div>
-      </div>
-    </Router>
-  );
+        </ContextProvider>
+      </Router>
+    );
+  }
 }
 
 export default App;

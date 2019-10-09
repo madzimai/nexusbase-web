@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
 class TableView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      batch_mode: false,
+      selected: null,
+    };
+  }
 
   rowClicked(recordId) {
     alert(recordId);

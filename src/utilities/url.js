@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function url(group, object) {
   if (group === 'collection') {
     return '/c/' + object.id + '/table';
@@ -9,5 +7,5 @@ export default function url(group, object) {
     return '/l/' + object.id;
   }
 
-  throw "url utility: unknown resolver";
+  throw Error("url utility: unknown resolver");
 }
