@@ -8,7 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      recordModal: true,
+      recordModal: false,
       openRecordModal: this.openRecordModal,
       closeRecordModal: this.closeRecordModal,
     }

@@ -39,7 +39,7 @@ class CollectionList extends Component {
       return (<p>Loading...</p>)
     }
     const collectionList = this.state.collections.map((collection) =>
-      <Collection {...collection} />
+      <Collection key={collection.id} {...collection} />
     );
 
     return (
