@@ -72,6 +72,15 @@ export const dummyData = {
         "field_2": "Random",
         "field_3": "bobrand@mail.com"
       }
+    },
+    {
+      id: 6,
+      collection_id: 1,
+      fields: {
+        "field_1": "Some",
+        "field_2": "Dude",
+        "field_3": "somedude@chill.com"
+      }
     }
   ]
 }

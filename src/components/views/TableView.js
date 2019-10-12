@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-import AppContext from '../../utilities/context'
+import { Link, Redirect } from "react-router-dom";
+import { withRouter } from "react-router";
+import AppContext from '../../utilities/context';
+import url from '../../utilities/url';
 
 class TableView extends Component {
   static contextType = AppContext
@@ -10,8 +12,9 @@ class TableView extends Component {
     selected: null,
   };
 
-  rowClicked(recordId) {
-    alert(recordId);
+  rowClicked = (recordId) => {
+    const currentUrl = this.props.history.location.pathname
+    this.props.history.push(currentUrl + "?r=" + recordId)
   }
 
   render() {
@@ -19,7 +22,7 @@ class TableView extends Component {
       <th key={field.id}>{field.name}</th>
     );
     const rows = this.props.records.map((record) =>
-      <tr key={record.id} onClick={() => this.context.openRecordModal()}>
+      <tr key={record.id} onClick={() => this.rowClicked(record.id)}>
         {this.props.collection.fields.map((field, index) =>
           <td key={index} style={{ border: '1px solid black' }}>{record.fields[field.id]}</td>
         )}
@@ -41,4 +44,4 @@ class TableView extends Component {
   }
 }
 
-export default TableView
+export default withRouter(TableView)

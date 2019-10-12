@@ -4,9 +4,13 @@ import { dummyData } from '../DummyData';
 
 export default function CollectionRead({ match }) {
   let recordList;
+  const viewProps = {
+    collection: dummyData.collections[0],
+    records: dummyData.records
+  }
 
   if (match.params.view === 'table') {
-    recordList = <TableView collection={dummyData.collections[0]} records={dummyData.records} />
+    recordList = <TableView {...viewProps}/>
   }
 
   return (
