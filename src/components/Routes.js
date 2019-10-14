@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from "react-router-dom";
 import Home from './pages/Home';
 import CollectionList from './pages/CollectionList';
+import WorkspaceRead from './pages/WorkspaceRead';
 import CollectionRead from './pages/CollectionRead';
 
 const routes = [
@@ -11,7 +12,12 @@ const routes = [
     main: () => <Home />
   },
   {
-    path: "/collections",
+    path: "/w/:id",
+    exact: true,
+    main: ({ match }) => <WorkspaceRead match={match} />
+  },
+  {
+    path: "/w/:id/collections",
     exact: true,
     main: () => <CollectionList />
   },

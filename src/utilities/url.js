@@ -1,10 +1,10 @@
 export default function url(group, object) {
-  if (group === 'collection') {
-    return '/c/' + object.id + '/table';
+  if (group === 'workspace') {
+    return '/w/' + object.id;
   }
 
-  if (group === 'label') {
-    return '/l/' + object.id;
+  if (group === 'collection') {
+    return '/c/' + object.id + '/table';
   }
 
   throw Error("url utility: unknown resolver");

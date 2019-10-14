@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import url from '../../utilities/url';
+import DashboardLayout from '../DashboardLayout';
+import { Container, Row, Col } from 'reactstrap';
 import { dummyData } from '../DummyData';
 
 class Collection extends Component {
@@ -43,7 +45,9 @@ class CollectionList extends Component {
     );
 
     return (
-      <ul>{collectionList}</ul>
+      <DashboardLayout>
+        <ul>{collectionList}</ul>
+      </DashboardLayout>
     )
   }
 }

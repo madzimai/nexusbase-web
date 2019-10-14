@@ -3,6 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import { withRouter } from "react-router";
 import AppContext from '../../utilities/context';
 import url from '../../utilities/url';
+import { Table } from 'reactstrap';
 
 class TableView extends Component {
   static contextType = AppContext
@@ -30,7 +31,7 @@ class TableView extends Component {
     );
 
     return (
-      <table id="records-table">
+      <Table hover>
         <thead>
           <tr>
             {headers}
@@ -39,7 +40,7 @@ class TableView extends Component {
         <tbody>
           {rows}
         </tbody>
-      </table>
+      </Table>
     )
   }
 }
