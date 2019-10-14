@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { ContextProvider } from './utilities/context'
+// components
 import Routes from './components/Routes';
-import RecordModal from './components/modals/RecordModal';
+import AppNavbar from './components/AppNavbar';
 
 class App extends Component {
   constructor(props) {
@@ -26,15 +27,8 @@ class App extends Component {
     return (
       <Router>
         <ContextProvider value={this.state}>
-          <div className="App">
-            <div className="header">
-              <Link to="/">NexusBase</Link>-|-
-              <Link to="/collections">Collections</Link>
-            </div>
-            <hr/>
-            <Routes />
-            <RecordModal />
-          </div>
+          <AppNavbar />
+          <Routes />
         </ContextProvider>
       </Router>
     );
